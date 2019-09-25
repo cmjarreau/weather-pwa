@@ -25,7 +25,9 @@
   <title>Weather PWA</title>
   <meta name="codelab" content="your-first-pwa-v3">
   <link rel="stylesheet" type="text/css" href="/styles/inline.css">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" >
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2F3BA2"/>
 
   <!-- CODELAB: Add link rel manifest -->
   <!-- CODELAB: Add iOS meta tags and icons -->
@@ -204,6 +206,14 @@
   <!-- CODELAB: Add the install script here -->
   <script>
     // CODELAB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((reg) => {
+            console.log('service worker registered.', reg);
+          });
+      });
+    }
   </script>
 
 </body>
